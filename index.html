@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exam Mastery Pro | Dashboard</title>
+    
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135810.png" type="image/png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -17,6 +20,8 @@
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --whatsapp-color: #25d366;
+            --facebook-color: #1877f2;
+            --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
 
         body { 
@@ -42,6 +47,12 @@
             text-align: center; 
             margin-bottom: 50px; 
         }
+        .header i {
+            font-size: 3rem;
+            color: var(--neon);
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+        }
         .header h1 { 
             font-size: 3.5rem; 
             font-weight: 800;
@@ -56,6 +67,50 @@
             font-size: 1.2rem;
             font-weight: 400;
             margin: 0;
+        }
+
+        /* Ambient Music Player Widget */
+        .music-widget {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(34, 211, 238, 0.05));
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            backdrop-filter: blur(20px);
+            padding: 20px 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .music-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .music-info i {
+            font-size: 1.8rem;
+            color: var(--neon);
+        }
+        /* Music Icon Spinning Animation when playing */
+        .music-info i.playing {
+            animation: spin 3s infinite linear;
+        }
+        .music-info div h4 {
+            margin: 0;
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+        .music-info div p {
+            margin: 3px 0 0 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        audio {
+            height: 40px;
+            border-radius: 8px;
+            outline: none;
         }
 
         /* Config Card UI */
@@ -295,14 +350,53 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
         }
+        .btn-facebook {
+            background: var(--facebook-color);
+            color: white;
+            box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3);
+        }
+        .btn-facebook:hover {
+            background: #1565c0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(24, 119, 242, 0.5);
+        }
+        .btn-instagram {
+            background: var(--instagram-gradient);
+            color: white;
+            box-shadow: 0 5px 15px rgba(220, 39, 67, 0.3);
+        }
+        .btn-instagram:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(220, 39, 67, 0.5);
+            filter: brightness(1.1);
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="header">
+        <i class="fa-solid fa-graduation-cap"></i>
         <h1>Exam Mastery Portal</h1>
         <p>Your Personal Adaptive Roadmap</p>
+    </div>
+
+    <div class="music-widget">
+        <div class="music-info">
+            <i class="fa-solid fa-compact-disc" id="music-icon"></i>
+            <div>
+                <h4>Study Lofi Beats</h4>
+                <p id="track-status">Lo-Fi ambient track for intense focus</p>
+            </div>
+        </div>
+        <div class="music-controls">
+            <audio id="bg-audio" src="milon.mp3" controls loop></audio>
+        </div>
     </div>
 
     <div class="config-card">
@@ -339,14 +433,19 @@
                 <i class="fa-regular fa-envelope"></i> yeasinkabir0000@gmail.com
             </a>
             <a href="https://wa.me/8801851715713" target="_blank" class="btn-contact btn-whatsapp">
-                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="https://www.facebook.com/yeasinxkobi" target="_blank" class="btn-contact btn-facebook">
+                <i class="fa-brands fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://www.instagram.com/yeasinxmi/" target="_blank" class="btn-contact btn-instagram">
+                <i class="fa-brands fa-instagram"></i> Instagram
             </a>
         </div>
     </div>
 </footer>
 
 <script>
-    // Subects configuration list
     const subs = [
         {id:"bn1", n:"Bangla 1st"}, {id:"bn2", n:"Bangla 2nd"}, {id:"en1", n:"Eng 1st"}, {id:"en2", n:"Eng 2nd"},
         {id:"ict", n:"ICT"}, {id:"math", n:"Math"}, {id:"geo1", n:"Geo 1st"}, {id:"geo2", n:"Geo 2nd"},
@@ -355,16 +454,38 @@
         {id:"ag1", n:"Agri 1st"}, {id:"ag2", n:"Agri 2nd"}
     ];
 
-    // Page Load hotei check korbe agey theke kono data save ache kina
     window.onload = function() {
         loadSavedInputs();
-        // Jodi agey theke input save thake, tahole automatic plan-ti screen e show korbe
         if(localStorage.getItem('inputs_saved') === "true") {
             generatePlan();
         }
+        
+        const audio = document.getElementById('bg-audio');
+        const icon = document.getElementById('music-icon');
+        
+        // Smart Audio State Persistence Setup
+        const savedTime = sessionStorage.getItem('musicTime');
+        const wasPlaying = sessionStorage.getItem('musicPlaying') === "true";
+
+        if (savedTime) audio.currentTime = savedTime;
+        if (wasPlaying) {
+            audio.play().catch(() => console.log("Interaction needed to play stream."));
+        }
+
+        // Event listeners to handle spinning disc animation dynamically
+        audio.onplay = function() { icon.classList.add('playing'); };
+        audio.onpause = function() { icon.classList.remove('playing'); };
+
+        setInterval(() => {
+            if(!audio.paused) {
+                sessionStorage.setItem('musicTime', audio.currentTime);
+                sessionStorage.setItem('musicPlaying', "true");
+            } else {
+                sessionStorage.setItem('musicPlaying', "false");
+            }
+        }, 1000);
     };
 
-    // Sob input and text values state browser e permanent save rakhar jonno function
     function saveInputs() {
         localStorage.setItem('totalDays', document.getElementById('totalDays').value);
         subs.forEach(s => {
@@ -374,7 +495,6 @@
         localStorage.setItem('inputs_saved', "true");
     }
 
-    // Load inputs when user re-enters the website
     function loadSavedInputs() {
         if(localStorage.getItem('totalDays')) {
             document.getElementById('totalDays').value = localStorage.getItem('totalDays');
@@ -408,7 +528,6 @@
                             let tid = `d${d}_${s.id}`;
                             let checkId = `check_${tid}`;
                             
-                            // Load custom edited text and checked status from local storage
                             let savedText = localStorage.getItem(tid) || `${s.n}: Chapters ${start}-${end}`;
                             let isChecked = localStorage.getItem(checkId) === "true";
                             
@@ -431,12 +550,10 @@
         document.getElementById('result').innerHTML = hasContent ? html : `<div style="text-align:center; color:var(--text-muted);">অনুগ্রহ করে সাবজেক্টের ইনপুট বক্সে অধ্যায় সংখ্যা দিয়ে জেনারেট করুন।</div>`;
     }
 
-    // Save customized edited text to LocalStorage
     function saveTask(id) { 
         localStorage.setItem(id, document.getElementById(id).innerText); 
     }
 
-    // Toggle checkbox state & apply visual strike-through instantly
     function toggleTask(tid) {
         const checkId = `check_${tid}`;
         const checkbox = document.getElementById(checkId);
@@ -446,7 +563,7 @@
             taskRow.classList.add('completed');
             localStorage.setItem(checkId, "true");
         } else {
-            taskRow.classList.remove('completed');
+            textRow = taskRow.classList.remove('completed');
             localStorage.setItem(checkId, "false");
         }
     }
