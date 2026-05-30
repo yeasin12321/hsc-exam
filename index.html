@@ -155,25 +155,77 @@
             letter-spacing: 1px;
         }
         
-        .task-editable { 
-            padding: 14px 18px; 
+        /* Modern Task Row Layout with Checkbox */
+        .task-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 18px; 
             border-radius: 12px; 
-            cursor: pointer; 
             border-left: 4px solid var(--primary); 
             margin: 12px 0; 
             background: rgba(15, 23, 42, 0.4); 
+            transition: all 0.3s ease;
+        }
+        .task-row:hover {
+            background: rgba(15, 23, 42, 0.6);
+        }
+
+        /* Custom Modern Checkbox */
+        .task-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--text-muted);
+            border-radius: 6px;
+            background: transparent;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            padding: 0;
+        }
+        .task-checkbox:checked {
+            background: var(--neon);
+            border-color: var(--neon);
+            box-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
+        }
+        .task-checkbox:checked::after {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: #020617;
+            font-size: 12px;
+            position: absolute;
+        }
+
+        /* Editable Task Content */
+        .task-editable { 
+            flex: 1;
+            cursor: pointer; 
             transition: all 0.2s ease;
             font-size: 0.95rem;
             line-height: 1.5;
-        }
-        .task-editable:hover {
-            background: rgba(15, 23, 42, 0.7);
-            padding-left: 22px;
+            color: var(--text-main);
         }
         .task-editable:focus { 
-            background: rgba(15, 23, 42, 0.9); 
+            background: rgba(15, 23, 42, 0.5); 
             outline: none; 
-            border-left-color: var(--neon);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        /* Strikethrough style when checked */
+        .task-row.completed {
+            border-left-color: var(--text-muted);
+            opacity: 0.5;
+        }
+        .task-row.completed .task-editable {
+            text-decoration: line-through;
+            color: var(--text-muted);
         }
 
         /* Professional Footer & Branding */
@@ -256,20 +308,20 @@
     <div class="config-card">
         <div class="config-item full-width">
             <label for="totalDays">Total Plan Days</label>
-            <input type="number" id="totalDays" value="15" style="width: 100px; text-align: left;">
+            <input type="number" id="totalDays" value="15" style="width: 100px; text-align: left;" oninput="saveInputs()">
         </div>
         
-        <div class="config-item"><label>বাংলা</label><div class="input-group"><input id="bn1" placeholder="১ম"> <input id="bn2" placeholder="২য়"></div></div>
-        <div class="config-item"><label>ইংরেজি</label><div class="input-group"><input id="en1" placeholder="১ম"> <input id="en2" placeholder="২য়"></div></div>
-        <div class="config-item"><label>ICT</label><input id="ict" placeholder="অধ্যায় সংখ্যা"></div>
-        <div class="config-item"><label>Mathematics</label><input id="math" placeholder="অধ্যায় সংখ্যা"></div>
-        <div class="config-item"><label>Geography</label><div class="input-group"><input id="geo1" placeholder="১ম"> <input id="geo2" placeholder="২য়"></div></div>
-        <div class="config-item"><label>History</label><input id="his" placeholder="অধ্যায় সংখ্যা"></div>
-        <div class="config-item"><label>Islam Studies</label><input id="isl" placeholder="অধ্যায় সংখ্যা"></div>
-        <div class="config-item"><label>Logic</label><div class="input-group"><input id="log1" placeholder="১ম"> <input id="log2" placeholder="২য়"></div></div>
-        <div class="config-item"><label>Economics</label><div class="input-group"><input id="ec1" placeholder="১ম"> <input id="ec2" placeholder="২য়"></div></div>
-        <div class="config-item"><label>Civics</label><div class="input-group"><input id="c1" placeholder="১ম"> <input id="c2" placeholder="২য়"></div></div>
-        <div class="config-item"><label>Agriculture</label><div class="input-group"><input id="ag1" placeholder="১ম"> <input id="ag2" placeholder="২য়"></div></div>
+        <div class="config-item"><label>বাংলা</label><div class="input-group"><input id="bn1" placeholder="১ম" oninput="saveInputs()"> <input id="bn2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>ইংরেজি</label><div class="input-group"><input id="en1" placeholder="১ম" oninput="saveInputs()"> <input id="en2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>ICT</label><input id="ict" placeholder="অধ্যায় সংখ্যা" oninput="saveInputs()"></div>
+        <div class="config-item"><label>Mathematics</label><input id="math" placeholder="অধ্যায় সংখ্যা" oninput="saveInputs()"></div>
+        <div class="config-item"><label>Geography</label><div class="input-group"><input id="geo1" placeholder="১ম" oninput="saveInputs()"> <input id="geo2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>History</label><input id="his" placeholder="অধ্যায় সংখ্যা" oninput="saveInputs()"></div>
+        <div class="config-item"><label>Islam Studies</label><input id="isl" placeholder="অধ্যায় সংখ্যা" oninput="saveInputs()"></div>
+        <div class="config-item"><label>Logic</label><div class="input-group"><input id="log1" placeholder="১ম" oninput="saveInputs()"> <input id="log2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>Economics</label><div class="input-group"><input id="ec1" placeholder="১ম" oninput="saveInputs()"> <input id="ec2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>Civics</label><div class="input-group"><input id="c1" placeholder="১ম" oninput="saveInputs()"> <input id="c2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>Agriculture</label><div class="input-group"><input id="ag1" placeholder="১ম" oninput="saveInputs()"> <input id="ag2" placeholder="২য়" oninput="saveInputs()"></div></div>
     </div>
 
     <button class="btn-generate" onclick="generatePlan()">GENERATE YOUR ROADMAP</button>
@@ -294,16 +346,48 @@
 </footer>
 
 <script>
+    // Subects configuration list
+    const subs = [
+        {id:"bn1", n:"Bangla 1st"}, {id:"bn2", n:"Bangla 2nd"}, {id:"en1", n:"Eng 1st"}, {id:"en2", n:"Eng 2nd"},
+        {id:"ict", n:"ICT"}, {id:"math", n:"Math"}, {id:"geo1", n:"Geo 1st"}, {id:"geo2", n:"Geo 2nd"},
+        {id:"his", n:"History"}, {id:"isl", n:"Islam"}, {id:"log1", n:"Logic 1st"}, {id:"log2", n:"Logic 2nd"},
+        {id:"ec1", n:"Eco 1st"}, {id:"ec2", n:"Eco 2nd"}, {id:"c1", n:"Civics 1st"}, {id:"c2", n:"Civics 2nd"},
+        {id:"ag1", n:"Agri 1st"}, {id:"ag2", n:"Agri 2nd"}
+    ];
+
+    // Page Load hotei check korbe agey theke kono data save ache kina
+    window.onload = function() {
+        loadSavedInputs();
+        // Jodi agey theke input save thake, tahole automatic plan-ti screen e show korbe
+        if(localStorage.getItem('inputs_saved') === "true") {
+            generatePlan();
+        }
+    };
+
+    // Sob input and text values state browser e permanent save rakhar jonno function
+    function saveInputs() {
+        localStorage.setItem('totalDays', document.getElementById('totalDays').value);
+        subs.forEach(s => {
+            let el = document.getElementById(s.id);
+            if(el) localStorage.setItem(`input_${s.id}`, el.value);
+        });
+        localStorage.setItem('inputs_saved', "true");
+    }
+
+    // Load inputs when user re-enters the website
+    function loadSavedInputs() {
+        if(localStorage.getItem('totalDays')) {
+            document.getElementById('totalDays').value = localStorage.getItem('totalDays');
+        }
+        subs.forEach(s => {
+            let savedVal = localStorage.getItem(`input_${s.id}`);
+            let el = document.getElementById(s.id);
+            if(el && savedVal) el.value = savedVal;
+        });
+    }
+
     function generatePlan() {
         const days = parseInt(document.getElementById('totalDays').value) || 15;
-        const subs = [
-            {id:"bn1", n:"Bangla 1st"}, {id:"bn2", n:"Bangla 2nd"}, {id:"en1", n:"Eng 1st"}, {id:"en2", n:"Eng 2nd"},
-            {id:"ict", n:"ICT"}, {id:"math", n:"Math"}, {id:"geo1", n:"Geo 1st"}, {id:"geo2", n:"Geo 2nd"},
-            {id:"his", n:"History"}, {id:"isl", n:"Islam"}, {id:"log1", n:"Logic 1st"}, {id:"log2", n:"Logic 2nd"},
-            {id:"ec1", n:"Eco 1st"}, {id:"ec2", n:"Eco 2nd"}, {id:"c1", n:"Civics 1st"}, {id:"c2", n:"Civics 2nd"},
-            {id:"ag1", n:"Agri 1st"}, {id:"ag2", n:"Agri 2nd"}
-        ];
-        
         let html = "";
         let hasContent = false;
 
@@ -322,8 +406,17 @@
                         if(start <= count) {
                             hasContent = true;
                             let tid = `d${d}_${s.id}`;
-                            let saved = localStorage.getItem(tid) || `${s.n}: Chapters ${start}-${end}`;
-                            dayTasks += `<div class="task-editable" contenteditable="true" id="${tid}" onblur="saveTask('${tid}')">${saved}</div>`;
+                            let checkId = `check_${tid}`;
+                            
+                            // Load custom edited text and checked status from local storage
+                            let savedText = localStorage.getItem(tid) || `${s.n}: Chapters ${start}-${end}`;
+                            let isChecked = localStorage.getItem(checkId) === "true";
+                            
+                            dayTasks += `
+                                <div class="task-row ${isChecked ? 'completed' : ''}" id="row_${tid}">
+                                    <input type="checkbox" class="task-checkbox" id="${checkId}" onchange="toggleTask('${tid}')" ${isChecked ? 'checked' : ''}>
+                                    <div class="task-editable" contenteditable="true" id="${tid}" onblur="saveTask('${tid}')">${savedText}</div>
+                                </div>`;
                         }
                     }
                 }
@@ -337,7 +430,26 @@
         
         document.getElementById('result').innerHTML = hasContent ? html : `<div style="text-align:center; color:var(--text-muted);">অনুগ্রহ করে সাবজেক্টের ইনপুট বক্সে অধ্যায় সংখ্যা দিয়ে জেনারেট করুন।</div>`;
     }
-    function saveTask(id) { localStorage.setItem(id, document.getElementById(id).innerText); }
+
+    // Save customized edited text to LocalStorage
+    function saveTask(id) { 
+        localStorage.setItem(id, document.getElementById(id).innerText); 
+    }
+
+    // Toggle checkbox state & apply visual strike-through instantly
+    function toggleTask(tid) {
+        const checkId = `check_${tid}`;
+        const checkbox = document.getElementById(checkId);
+        const taskRow = document.getElementById(`row_${tid}`);
+        
+        if(checkbox.checked) {
+            taskRow.classList.add('completed');
+            localStorage.setItem(checkId, "true");
+        } else {
+            taskRow.classList.remove('completed');
+            localStorage.setItem(checkId, "false");
+        }
+    }
 </script>
 </body>
 </html>
