@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Mastery Pro | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root { 
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+            --glass: rgba(30, 41, 59, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --primary: #7c3aed; 
+            --neon: #22d3ee; 
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --whatsapp-color: #25d366;
+        }
+
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            background: var(--bg-gradient); 
+            color: var(--text-main); 
+            margin: 0; 
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 60px 20px;
+            flex: 1;
+        }
+        
+        /* Header Section */
+        .header { 
+            text-align: center; 
+            margin-bottom: 50px; 
+        }
+        .header h1 { 
+            font-size: 3.5rem; 
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            background: linear-gradient(to right, #a78bfa, var(--neon)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            letter-spacing: -1px;
+        }
+        .header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        /* Config Card UI */
+        .config-card { 
+            background: var(--glass); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            padding: 35px; 
+            border-radius: 24px; 
+            border: 1px solid var(--glass-border); 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 25px; 
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .config-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .config-item.full-width {
+            grid-column: 1 / -1;
+            margin-bottom: 10px;
+        }
+
+        .config-item label {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        input { 
+            background: rgba(15, 23, 42, 0.6); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            color: white; 
+            padding: 12px; 
+            border-radius: 12px; 
+            width: 100%; 
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: var(--neon);
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+        }
+
+        /* Button UI */
+        .btn-generate { 
+            background: linear-gradient(135deg, var(--primary), #6366f1); 
+            border: none; 
+            padding: 18px; 
+            border-radius: 16px; 
+            color: white; 
+            font-weight: 700; 
+            cursor: pointer; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            width: 100%; 
+            font-size: 1.15rem; 
+            letter-spacing: 0.5px;
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
+        }
+        .btn-generate:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.5);
+            background: linear-gradient(135deg, #8b5cf6, #4f46e5); 
+        }
+
+        /* Output Cards */
+        .day-card { 
+            background: rgba(30, 41, 59, 0.25); 
+            border: 1px solid var(--glass-border); 
+            padding: 30px; 
+            border-radius: 20px; 
+            margin-bottom: 25px; 
+            transition: all 0.3s ease; 
+        }
+        .day-card:hover { 
+            border-color: rgba(124, 58, 237, 0.4);
+            background: rgba(30, 41, 59, 0.4);
+        }
+        .day-card h3 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            color: var(--neon);
+            letter-spacing: 1px;
+        }
+        
+        .task-editable { 
+            padding: 14px 18px; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            border-left: 4px solid var(--primary); 
+            margin: 12px 0; 
+            background: rgba(15, 23, 42, 0.4); 
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .task-editable:hover {
+            background: rgba(15, 23, 42, 0.7);
+            padding-left: 22px;
+        }
+        .task-editable:focus { 
+            background: rgba(15, 23, 42, 0.9); 
+            outline: none; 
+            border-left-color: var(--neon);
+        }
+
+        /* Professional Footer & Branding */
+        footer {
+            background: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid var(--glass-border);
+            padding: 40px 20px;
+            margin-top: auto;
+            backdrop-filter: blur(10px);
+        }
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+        .developer-info h4 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        .developer-info h4 span {
+            color: var(--neon);
+        }
+        .developer-info p {
+            margin: 5px 0 0 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-email {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-email:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        .btn-whatsapp {
+            background: var(--whatsapp-color);
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        .btn-whatsapp:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Exam Mastery Portal</h1>
+        <p>Your Personal Adaptive Roadmap</p>
+    </div>
+
+    <div class="config-card">
+        <div class="config-item full-width">
+            <label for="totalDays">Total Plan Days</label>
+            <input type="number" id="totalDays" value="15" style="width: 100px; text-align: left;">
+        </div>
+        
+        <div class="config-item"><label>বাংলা</label><div class="input-group"><input id="bn1" placeholder="১ম"> <input id="bn2" placeholder="২য়"></div></div>
+        <div class="config-item"><label>ইংরেজি</label><div class="input-group"><input id="en1" placeholder="১ম"> <input id="en2" placeholder="২য়"></div></div>
+        <div class="config-item"><label>ICT</label><input id="ict" placeholder="অধ্যায় সংখ্যা"></div>
+        <div class="config-item"><label>Mathematics</label><input id="math" placeholder="অধ্যায় সংখ্যা"></div>
+        <div class="config-item"><label>Geography</label><div class="input-group"><input id="geo1" placeholder="১ম"> <input id="geo2" placeholder="২য়"></div></div>
+        <div class="config-item"><label>History</label><input id="his" placeholder="অধ্যায় সংখ্যা"></div>
+        <div class="config-item"><label>Islam Studies</label><input id="isl" placeholder="অধ্যায় সংখ্যা"></div>
+        <div class="config-item"><label>Logic</label><div class="input-group"><input id="log1" placeholder="১ম"> <input id="log2" placeholder="২য়"></div></div>
+        <div class="config-item"><label>Economics</label><div class="input-group"><input id="ec1" placeholder="১ম"> <input id="ec2" placeholder="২য়"></div></div>
+        <div class="config-item"><label>Civics</label><div class="input-group"><input id="c1" placeholder="১ম"> <input id="c2" placeholder="২য়"></div></div>
+        <div class="config-item"><label>Agriculture</label><div class="input-group"><input id="ag1" placeholder="১ম"> <input id="ag2" placeholder="২য়"></div></div>
+    </div>
+
+    <button class="btn-generate" onclick="generatePlan()">GENERATE YOUR ROADMAP</button>
+    <div id="result" style="margin-top: 40px;"></div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="developer-info">
+            <h4>System Developed by <span>Yeasin Kabir</span></h4>
+            <p>Full-Stack Solutions & Adaptive Web Architecture</p>
+        </div>
+        <div class="contact-buttons">
+            <a href="mailto:yeasinkabir0000@gmail.com" class="btn-contact btn-email">
+                <i class="fa-regular fa-envelope"></i> yeasinkabir0000@gmail.com
+            </a>
+            <a href="https://wa.me/8801851715713" target="_blank" class="btn-contact btn-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function generatePlan() {
+        const days = parseInt(document.getElementById('totalDays').value) || 15;
+        const subs = [
+            {id:"bn1", n:"Bangla 1st"}, {id:"bn2", n:"Bangla 2nd"}, {id:"en1", n:"Eng 1st"}, {id:"en2", n:"Eng 2nd"},
+            {id:"ict", n:"ICT"}, {id:"math", n:"Math"}, {id:"geo1", n:"Geo 1st"}, {id:"geo2", n:"Geo 2nd"},
+            {id:"his", n:"History"}, {id:"isl", n:"Islam"}, {id:"log1", n:"Logic 1st"}, {id:"log2", n:"Logic 2nd"},
+            {id:"ec1", n:"Eco 1st"}, {id:"ec2", n:"Eco 2nd"}, {id:"c1", n:"Civics 1st"}, {id:"c2", n:"Civics 2nd"},
+            {id:"ag1", n:"Agri 1st"}, {id:"ag2", n:"Agri 2nd"}
+        ];
+        
+        let html = "";
+        let hasContent = false;
+
+        for (let d = 1; d <= days; d++) {
+            let dayHtml = `<div class="day-card"><h3>DAY ${d}</h3>`;
+            let dayTasks = "";
+
+            subs.forEach(s => {
+                let inputEl = document.getElementById(s.id);
+                if(inputEl) {
+                    let count = parseInt(inputEl.value) || 0;
+                    if(count > 0) {
+                        let cp = Math.ceil(count / days);
+                        let start = (d-1)*cp + 1;
+                        let end = Math.min(start + cp - 1, count);
+                        if(start <= count) {
+                            hasContent = true;
+                            let tid = `d${d}_${s.id}`;
+                            let saved = localStorage.getItem(tid) || `${s.n}: Chapters ${start}-${end}`;
+                            dayTasks += `<div class="task-editable" contenteditable="true" id="${tid}" onblur="saveTask('${tid}')">${saved}</div>`;
+                        }
+                    }
+                }
+            });
+
+            dayHtml += dayTasks + `</div>`;
+            if(dayTasks !== "") {
+                html += dayHtml;
+            }
+        }
+        
+        document.getElementById('result').innerHTML = hasContent ? html : `<div style="text-align:center; color:var(--text-muted);">অনুগ্রহ করে সাবজেক্টের ইনপুট বক্সে অধ্যায় সংখ্যা দিয়ে জেনারেট করুন।</div>`;
+    }
+    function saveTask(id) { localStorage.setItem(id, document.getElementById(id).innerText); }
+</script>
+</body>
+</html>
