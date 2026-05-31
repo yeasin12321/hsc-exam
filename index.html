@@ -93,7 +93,6 @@
             font-size: 1.8rem;
             color: var(--neon);
         }
-        /* Music Icon Spinning Animation when playing */
         .music-info i.playing {
             animation: spin 3s infinite linear;
         }
@@ -111,6 +110,19 @@
             height: 40px;
             border-radius: 8px;
             outline: none;
+        }
+
+        /* Section Title for Categories */
+        .section-title {
+            grid-column: 1 / -1;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--neon);
+            margin-top: 15px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+            padding-bottom: 5px;
+            letter-spacing: 0.5px;
         }
 
         /* Config Card UI */
@@ -391,7 +403,7 @@
             <i class="fa-solid fa-compact-disc" id="music-icon"></i>
             <div>
                 <h4>Study Beats</h4>
-                <p id="track-status">তোগো জন্য মোটিভেশন</p>
+                <p id="track-status">তোগো জন্য মোতিভেশন</p>
             </div>
         </div>
         <div class="music-controls">
@@ -405,17 +417,36 @@
             <input type="number" id="totalDays" value="15" style="width: 100px; text-align: left;" oninput="saveInputs()">
         </div>
         
-        <div class="config-item"><label>বাংলা</label><div class="input-group"><input id="bn1" placeholder="১ম" oninput="saveInputs()"> <input id="bn2" placeholder="২য়" oninput="saveInputs()"></div></div>
-        <div class="config-item"><label>ইংরেজি</label><div class="input-group"><input id="en1" placeholder="১ম" oninput="saveInputs()"> <input id="en2" placeholder="২য়" oninput="saveInputs()"></div></div>
-        <div class="config-item"><label>ICT</label><input id="ict" placeholder="অধ্যায় সংখ্যা" oninput="saveInputs()"></div>
-        <div class="config-item"><label>Mathematics</label><input id="math" placeholder="অধ্যায় সংখ্যা" oninput="saveInputs()"></div>
-        <div class="config-item"><label>Geography</label><div class="input-group"><input id="geo1" placeholder="১ম" oninput="saveInputs()"> <input id="geo2" placeholder="২য়" oninput="saveInputs()"></div></div>
-        <div class="config-item"><label>History</label><input id="his" placeholder="অধ্যায় সংখ্যা" oninput="saveInputs()"></div>
-        <div class="config-item"><label>Islam Studies</label><input id="isl" placeholder="অধ্যায় সংখ্যা" oninput="saveInputs()"></div>
-        <div class="config-item"><label>Logic</label><div class="input-group"><input id="log1" placeholder="১ম" oninput="saveInputs()"> <input id="log2" placeholder="২য়" oninput="saveInputs()"></div></div>
-        <div class="config-item"><label>Economics</label><div class="input-group"><input id="ec1" placeholder="১ম" oninput="saveInputs()"> <input id="ec2" placeholder="২য়" oninput="saveInputs()"></div></div>
-        <div class="config-item"><label>Civics</label><div class="input-group"><input id="c1" placeholder="১ম" oninput="saveInputs()"> <input id="c2" placeholder="২য়" oninput="saveInputs()"></div></div>
-        <div class="config-item"><label>Agriculture</label><div class="input-group"><input id="ag1" placeholder="১ম" oninput="saveInputs()"> <input id="ag2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="section-title">🟢 আবশ্যিক বিষয় (Compulsory Subjects)</div>
+        <div class="config-item"><label>বাংলা</label><div class="input-group"><input id="bn1" placeholder="১ম" oninput="saveInputs()"><input id="bn2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>ইংরেজি</label><div class="input-group"><input id="en1" placeholder="১ম" oninput="saveInputs()"><input id="en2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>তথ্য ও যোগাযোগ প্রযুক্তি (ICT)</label><input id="ict" placeholder="অধ্যায় সংখ্যা" oninput="saveInputs()"></div>
+        
+        <div class="section-title">🔴 বিজ্ঞান শাখা (Science Subjects)</div>
+        <div class="config-item"><label>পদার্থবিজ্ঞান (Physics)</label><div class="input-group"><input id="phy1" placeholder="১ম" oninput="saveInputs()"><input id="phy2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>রসায়ন (Chemistry)</label><div class="input-group"><input id="chem1" placeholder="১ম" oninput="saveInputs()"><input id="chem2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>জীববিজ্ঞান (Biology)</label><div class="input-group"><input id="bio1" placeholder="১ম" oninput="saveInputs()"><input id="bio2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>উচ্চতর গণিত (Higher Mathematics)</label><div class="input-group"><input id="hmath1" placeholder="১ম" oninput="saveInputs()"><input id="hmath2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>কৃষি শিক্ষা (Agriculture)</label><div class="input-group"><input id="ag1" placeholder="১ম" oninput="saveInputs()"><input id="ag2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>পরিসংখ্যান (Statistics)</label><div class="input-group"><input id="stat1" placeholder="১ম" oninput="saveInputs()"><input id="stat2" placeholder="২য়" oninput="saveInputs()"></div></div>
+
+        <div class="section-title">🟡 মানবিক শাখা (Humanities / Arts Subjects)</div>
+        <div class="config-item"><label>পৌরনীতি ও সুশাসন (Civics)</label><div class="input-group"><input id="c1" placeholder="১ম" oninput="saveInputs()"><input id="c2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>ইসলামের ইতিহাস ও সংস্কৃতি (Islamic History)</label><div class="input-group"><input id="ihis1" placeholder="১ম" oninput="saveInputs()"><input id="ihis2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>অর্থনীতি (Economics)</label><div class="input-group"><input id="ec1" placeholder="১ম" oninput="saveInputs()"><input id="ec2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>ইতিহাস (History)</label><div class="input-group"><input id="his1" placeholder="১ম" oninput="saveInputs()"><input id="his2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>সমাজবিজ্ঞান (Sociology)</label><div class="input-group"><input id="soc1" placeholder="১ম" oninput="saveInputs()"><input id="soc2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>সমাজকর্ম (Social Work)</label><div class="input-group"><input id="sw1" placeholder="১ম" oninput="saveInputs()"><input id="sw2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>যুক্তিবিদ্যা (Logic)</label><div class="input-group"><input id="log1" placeholder="১ম" oninput="saveInputs()"><input id="log2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>ভূগোল (Geography)</label><div class="input-group"><input id="geo1" placeholder="১ম" oninput="saveInputs()"><input id="geo2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>মনোবিজ্ঞান (Psychology)</label><div class="input-group"><input id="psy1" placeholder="১ম" oninput="saveInputs()"><input id="psy2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>ইসলাম শিক্ষা (Islamic Studies)</label><div class="input-group"><input id="isl1" placeholder="১ম" oninput="saveInputs()"><input id="isl2" placeholder="২য়" oninput="saveInputs()"></div></div>
+
+        <div class="section-title">🔵 ব্যবসায় শিক্ষা শাখা (Commerce / Business Studies)</div>
+        <div class="config-item"><label>হিসাববিজ্ঞান (Accounting)</label><div class="input-group"><input id="acc1" placeholder="১ম" oninput="saveInputs()"><input id="acc2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>ব্যবসায় সংগঠন ও ব্যবস্থাপনা (BOM)</label><div class="input-group"><input id="bom1" placeholder="১ম" oninput="saveInputs()"><input id="bom2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>উৎপাদন ব্যবস্থাপনা ও বিপণন (PM & Mkt)</label><div class="input-group"><input id="prod1" placeholder="১ম" oninput="saveInputs()"><input id="prod2" placeholder="২য়" oninput="saveInputs()"></div></div>
+        <div class="config-item"><label>ফিন্যান্স, ব্যাংকিং ও বিমা (Finance)</label><div class="input-group"><input id="fin1" placeholder="১ম" oninput="saveInputs()"><input id="fin2" placeholder="২য়" oninput="saveInputs()"></div></div>
     </div>
 
     <button class="btn-generate" onclick="generatePlan()">GENERATE YOUR ROADMAP</button>
@@ -447,11 +478,21 @@
 
 <script>
     const subs = [
-        {id:"bn1", n:"Bangla 1st"}, {id:"bn2", n:"Bangla 2nd"}, {id:"en1", n:"Eng 1st"}, {id:"en2", n:"Eng 2nd"},
-        {id:"ict", n:"ICT"}, {id:"math", n:"Math"}, {id:"geo1", n:"Geo 1st"}, {id:"geo2", n:"Geo 2nd"},
-        {id:"his", n:"History"}, {id:"isl", n:"Islam"}, {id:"log1", n:"Logic 1st"}, {id:"log2", n:"Logic 2nd"},
-        {id:"ec1", n:"Eco 1st"}, {id:"ec2", n:"Eco 2nd"}, {id:"c1", n:"Civics 1st"}, {id:"c2", n:"Civics 2nd"},
-        {id:"ag1", n:"Agri 1st"}, {id:"ag2", n:"Agri 2nd"}
+        // Compulsory
+        {id:"bn1", n:"Bangla 1st"}, {id:"bn2", n:"Bangla 2nd"}, {id:"en1", n:"Eng 1st"}, {id:"en2", n:"Eng 2nd"}, {id:"ict", n:"ICT"}, 
+        // Science
+        {id:"phy1", n:"Physics 1st"}, {id:"phy2", n:"Physics 2nd"}, {id:"chem1", n:"Chemistry 1st"}, {id:"chem2", n:"Chemistry 2nd"},
+        {id:"bio1", n:"Biology 1st"}, {id:"bio2", n:"Biology 2nd"}, {id:"hmath1", n:"Higher Math 1st"}, {id:"hmath2", n:"Higher Math 2nd"},
+        {id:"ag1", n:"Agri 1st"}, {id:"ag2", n:"Agri 2nd"}, {id:"stat1", n:"Statistics 1st"}, {id:"stat2", n:"Statistics 2nd"},
+        // Arts / Humanities
+        {id:"c1", n:"Civics 1st"}, {id:"c2", n:"Civics 2nd"}, {id:"ihis1", n:"Islamic History 1st"}, {id:"ihis2", n:"Islamic History 2nd"},
+        {id:"ec1", n:"Eco 1st"}, {id:"ec2", n:"Eco 2nd"}, {id:"his1", n:"History 1st"}, {id:"his2", n:"History 2nd"},
+        {id:"soc1", n:"Sociology 1st"}, {id:"soc2", n:"Sociology 2nd"}, {id:"sw1", n:"Social Work 1st"}, {id:"sw2", n:"Social Work 2nd"},
+        {id:"log1", n:"Logic 1st"}, {id:"log2", n:"Logic 2nd"}, {id:"geo1", n:"Geo 1st"}, {id:"geo2", n:"Geo 2nd"},
+        {id:"psy1", n:"Psychology 1st"}, {id:"psy2", n:"Psychology 2nd"}, {id:"isl1", n:"Islam Studies 1st"}, {id:"isl2", n:"Islam Studies 2nd"},
+        // Commerce
+        {id:"acc1", n:"Accounting 1st"}, {id:"acc2", n:"Accounting 2nd"}, {id:"bom1", n:"B.Org & Mgmt 1st"}, {id:"bom2", n:"B.Org & Mgmt 2nd"},
+        {id:"prod1", n:"Prod.Mgmt & Mkt 1st"}, {id:"prod2", n:"Prod.Mgmt & Mkt 2nd"}, {id:"fin1", n:"Finance 1st"}, {id:"fin2", n:"Finance 2nd"}
     ];
 
     window.onload = function() {
@@ -463,7 +504,6 @@
         const audio = document.getElementById('bg-audio');
         const icon = document.getElementById('music-icon');
         
-        // Smart Audio State Persistence Setup
         const savedTime = sessionStorage.getItem('musicTime');
         const wasPlaying = sessionStorage.getItem('musicPlaying') === "true";
 
@@ -472,7 +512,6 @@
             audio.play().catch(() => console.log("Interaction needed to play stream."));
         }
 
-        // Event listeners to handle spinning disc animation dynamically
         audio.onplay = function() { icon.classList.add('playing'); };
         audio.onpause = function() { icon.classList.remove('playing'); };
 
@@ -563,7 +602,7 @@
             taskRow.classList.add('completed');
             localStorage.setItem(checkId, "true");
         } else {
-            textRow = taskRow.classList.remove('completed');
+            taskRow.classList.remove('completed');
             localStorage.setItem(checkId, "false");
         }
     }
