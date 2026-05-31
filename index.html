@@ -202,6 +202,55 @@
             background: linear-gradient(135deg, #8b5cf6, #4f46e5); 
         }
 
+        /* Tutorial Video Section Style */
+        .tutorial-card {
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(124, 58, 237, 0.03));
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 24px;
+            margin-top: 50px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        .tutorial-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .tutorial-card h3 i {
+            color: #ef4444; /* Red video icon */
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+        }
+        .tutorial-card p {
+            color: var(--text-muted);
+            margin: 0 0 20px 0;
+            font-size: 0.95rem;
+        }
+        .btn-tutorial {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #1877f2, #2563eb);
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 8px 20px rgba(24, 119, 242, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-tutorial:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(24, 119, 242, 0.5);
+            filter: brightness(1.1);
+        }
+
         /* Output Cards */
         .day-card { 
             background: rgba(30, 41, 59, 0.25); 
@@ -417,11 +466,13 @@
             <input type="number" id="totalDays" value="15" style="width: 100px; text-align: left;" oninput="saveInputs()">
         </div>
         
+        <!-- Compulsory Subjects -->
         <div class="section-title">🟢 আবশ্যিক বিষয় (Compulsory Subjects)</div>
         <div class="config-item"><label>বাংলা</label><div class="input-group"><input id="bn1" placeholder="১ম" oninput="saveInputs()"><input id="bn2" placeholder="২য়" oninput="saveInputs()"></div></div>
         <div class="config-item"><label>ইংরেজি</label><div class="input-group"><input id="en1" placeholder="১ম" oninput="saveInputs()"><input id="en2" placeholder="২য়" oninput="saveInputs()"></div></div>
         <div class="config-item"><label>তথ্য ও যোগাযোগ প্রযুক্তি (ICT)</label><input id="ict" placeholder="অধ্যায় সংখ্যা" oninput="saveInputs()"></div>
         
+        <!-- Science Group -->
         <div class="section-title">🔴 বিজ্ঞান শাখা (Science Subjects)</div>
         <div class="config-item"><label>পদার্থবিজ্ঞান (Physics)</label><div class="input-group"><input id="phy1" placeholder="১ম" oninput="saveInputs()"><input id="phy2" placeholder="২য়" oninput="saveInputs()"></div></div>
         <div class="config-item"><label>রসায়ন (Chemistry)</label><div class="input-group"><input id="chem1" placeholder="১ম" oninput="saveInputs()"><input id="chem2" placeholder="২য়" oninput="saveInputs()"></div></div>
@@ -430,6 +481,7 @@
         <div class="config-item"><label>কৃষি শিক্ষা (Agriculture)</label><div class="input-group"><input id="ag1" placeholder="১ম" oninput="saveInputs()"><input id="ag2" placeholder="২য়" oninput="saveInputs()"></div></div>
         <div class="config-item"><label>পরিসংখ্যান (Statistics)</label><div class="input-group"><input id="stat1" placeholder="১ম" oninput="saveInputs()"><input id="stat2" placeholder="২য়" oninput="saveInputs()"></div></div>
 
+        <!-- Humanities / Arts Group -->
         <div class="section-title">🟡 মানবিক শাখা (Humanities / Arts Subjects)</div>
         <div class="config-item"><label>পৌরনীতি ও সুশাসন (Civics)</label><div class="input-group"><input id="c1" placeholder="১ম" oninput="saveInputs()"><input id="c2" placeholder="২য়" oninput="saveInputs()"></div></div>
         <div class="config-item"><label>ইসলামের ইতিহাস ও সংস্কৃতি (Islamic History)</label><div class="input-group"><input id="ihis1" placeholder="১ম" oninput="saveInputs()"><input id="ihis2" placeholder="২য়" oninput="saveInputs()"></div></div>
@@ -442,6 +494,7 @@
         <div class="config-item"><label>মনোবিজ্ঞান (Psychology)</label><div class="input-group"><input id="psy1" placeholder="১ম" oninput="saveInputs()"><input id="psy2" placeholder="২য়" oninput="saveInputs()"></div></div>
         <div class="config-item"><label>ইসলাম শিক্ষা (Islamic Studies)</label><div class="input-group"><input id="isl1" placeholder="১ম" oninput="saveInputs()"><input id="isl2" placeholder="২য়" oninput="saveInputs()"></div></div>
 
+        <!-- Commerce Group -->
         <div class="section-title">🔵 ব্যবসায় শিক্ষা শাখা (Commerce / Business Studies)</div>
         <div class="config-item"><label>হিসাববিজ্ঞান (Accounting)</label><div class="input-group"><input id="acc1" placeholder="১ম" oninput="saveInputs()"><input id="acc2" placeholder="২য়" oninput="saveInputs()"></div></div>
         <div class="config-item"><label>ব্যবসায় সংগঠন ও ব্যবস্থাপনা (BOM)</label><div class="input-group"><input id="bom1" placeholder="১ম" oninput="saveInputs()"><input id="bom2" placeholder="২য়" oninput="saveInputs()"></div></div>
@@ -450,7 +503,17 @@
     </div>
 
     <button class="btn-generate" onclick="generatePlan()">GENERATE YOUR ROADMAP</button>
+    
     <div id="result" style="margin-top: 40px;"></div>
+
+    <!-- Tutorial Video Section -->
+    <div class="tutorial-card">
+        <h3><i class="fa-solid fa-circle-play"></i> কীভাবে পোর্টালটি ব্যবহার করবেন?</h3>
+        <p>সহজে রোডম্যাপ ও স্টাডি প্ল্যান তৈরি করার নিয়ম দেখতে নিচের টিউটোরিয়াল ভিডিওটি দেখুন।</p>
+        <a href="https://www.facebook.com/share/v/1b5iy3L3xD/" target="_blank" class="btn-tutorial">
+            <i class="fa-brands fa-facebook"></i> Watch Tutorial Video
+        </a>
+    </div>
 </div>
 
 <footer>
